@@ -30,7 +30,7 @@ import onecom.pageobjects.selectCategory;
 public class submitOrder extends BaseTest{
 
 	@Test(dataProvider="getData")
-	public void submitorder(HashMap<String,String> input) throws IOException
+	public void submitorder(HashMap<String,String> input) throws IOException, InterruptedException
 	{
 		
 		selectCategory s=new selectCategory(driver);

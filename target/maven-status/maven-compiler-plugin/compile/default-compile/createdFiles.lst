@@ -1,0 +1,5 @@
+onecom\pageobjects\CartPage.class
+onecom\pageobjects\HomePage.class
+onecom\AbstractComponents\AbstractComponent.class
+onecom\pageobjects\selectCategory.class
+onecom\pageobjects\Payment.class

@@ -50,7 +50,8 @@ WebDriver driver;
 	
 	By viewProduct=By.xpath("//i[@class='fa fa-plus-square']");
 	By cart=By.xpath("//a[@data-product-id='12']/i");
-	
+	By viewcart=By.xpath("//p//a[@href='/view_cart']");
+	By cs=By.className("btn-success");
 	
 	public void selectcategory()
 	{
@@ -92,11 +93,12 @@ WebDriver driver;
 		
 	}
 	
-	public void addDress()
+	public void addDress() throws InterruptedException
 	{
 		quantity.clear();
 		quantity.sendKeys("2");
 		addDressToCart.click();
+		waitforclickableElement(cs);
 		continueShoping.click();
 	}
 	public void seelctBHcat()
@@ -111,12 +113,13 @@ WebDriver driver;
 		return bhdrs;
 		
 	}
-	public void addBHTocart(String babydrs)
+	public void addBHTocart(String babydrs) throws InterruptedException
 	{
 		WebElement bh=getbabyHugDress(babydrs);
 		WebElement addTocart2 = bh.findElement(cart);
 		scrollToelement(addTocart2);
 		addTocart2.click();
+		waitforclickableElement(viewcart);
 		viewCart.click();
 		
 		

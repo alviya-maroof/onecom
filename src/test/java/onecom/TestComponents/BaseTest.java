@@ -12,6 +12,7 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -25,11 +26,13 @@ public class BaseTest {
 	public WebDriver driver;
 	public WebDriver initializeDriver() throws IOException
 	{
-//		Properties prop=new Properties();
-//		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"//src//main//java//onecom//resources");
-//		prop.load(fis);
-//		String browser =prop.getProperty("browser");
-		String browser="chrome";
+		Properties prop=new Properties();
+		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"//src//main//java//onecom//resources//GlobalData.properties");
+		prop.load(fis);
+		String browser = System.getProperty("browser")!=null ? System.getProperty("browser") :prop.getProperty("browser");
+		
+		//String browser =prop.getProperty("browser");
+		
 		if(browser.equalsIgnoreCase("chrome"))
 		{
 		WebDriverManager.chromedriver().setup();
@@ -38,7 +41,10 @@ public class BaseTest {
 		}
 		else if(browser.equalsIgnoreCase("firefox"))
 		{
-			//firefox
+			
+			System.setProperty("webdriver.gecko.driver",
+					"C:\\Users\\Alviya\\Downloads\\geckodriver-v0.33.0-win64\\geckodriver.exe");
+			driver = new FirefoxDriver();
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();

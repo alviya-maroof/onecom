@@ -1,6 +1,9 @@
 package onecom.pageobjects;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -58,11 +61,15 @@ WebDriver driver;
 	@FindBy(xpath="//form[@action='/signup']/p")
 	WebElement errormessage;
 	
+    By create=By.xpath("//button[@data-qa='create-account']");
 
-
-	public void gotTo()
+	public void gotTo() throws IOException
 	{
-		driver.get("https://automationexercise.com/");
+		Properties prop=new Properties();
+		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"//src//main//java//onecom//resources//GlobalData.properties");
+		prop.load(fis);
+		String URL=prop.getProperty("URL");
+		driver.get(URL);
 	}
 	public void signUp(String Name, String Email)
 	{
@@ -86,6 +93,7 @@ WebDriver driver;
 		sendValue(cty,City);
 		sendValue(zip,Zipcode);
 		sendValue(MN,MobileNumber);
+		scrollToelement(CreateAccount);;
 		CreateAccount.click();
 		
 		Continue.click();
