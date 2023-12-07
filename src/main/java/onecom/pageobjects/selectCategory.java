@@ -76,7 +76,7 @@ WebDriver driver;
 	public WebElement getDressByName(String dress)
 	{
 		
-		WebElement drs=dressList().stream().filter(d-> d.findElement(By.cssSelector("p")).getText().equalsIgnoreCase("Stylish Dress")).findFirst().orElse(null);
+		WebElement drs=dressList().stream().filter(d-> d.findElement(By.cssSelector("p")).getText().equalsIgnoreCase(dress)).findFirst().orElse(null);
 		Boolean x=dressList().stream().anyMatch(d-> d.findElement(By.cssSelector("p")).getText().equalsIgnoreCase("Stylish Dress"));
 		System.out.println(x);
 		return drs;

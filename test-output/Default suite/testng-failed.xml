@@ -7,7 +7,7 @@
         <methods>
           <include name="close"/>
           <include name="launchApp"/>
-          <include name="submitorder" invocation-numbers="0"/>
+          <include name="submitorder"/>
         </methods>
       </class> <!-- onecom.tests.submitOrder -->
     </classes>

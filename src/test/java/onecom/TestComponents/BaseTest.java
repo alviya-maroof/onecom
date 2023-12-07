@@ -25,17 +25,21 @@ import onecom.pageobjects.HomePage;
 public class BaseTest {
 	public WebDriver driver;
 	public WebDriver initializeDriver() throws IOException
-	{
+	{ 
 		Properties prop=new Properties();
-		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"//src//main//java//onecom//resources//GlobalData.properties");
+		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"//src//main//java//onecom//Resources//GlobalData.properties");
 		prop.load(fis);
 		String browser = System.getProperty("browser")!=null ? System.getProperty("browser") :prop.getProperty("browser");
 		
-		//String browser =prop.getProperty("browser");
+		String chromePath=System.getProperty("user.dir")+prop.getProperty("chromedriverpath");
+		System.out.println(chromePath);
+		
+		
 		
 		if(browser.equalsIgnoreCase("chrome"))
 		{
-		WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.chrome.driver",chromePath);
+//		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		
 		}

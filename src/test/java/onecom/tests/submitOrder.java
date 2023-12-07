@@ -37,7 +37,7 @@ public class submitOrder extends BaseTest{
 		s.selectcategory();
 		s.selectSubCategory();
 		s.getDressByName(input.get("DressType"));
-       s.viewproduct("Stylish Dress");
+       s.viewproduct(input.get("DressType"));
        s.addDress(); 
        s.products();
        s.seelctBHcat();
