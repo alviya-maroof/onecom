@@ -48,7 +48,7 @@ WebDriver driver;
 	@FindBy(xpath="//p//a[@href='/view_cart']")
 	WebElement viewCart;
 	
-	By viewProduct=By.xpath("//i[@class='fa fa-plus-square']");
+	By viewProduct=By.xpath("//a[@href='/product_details/4']");
 	By cart=By.xpath("//a[@data-product-id='12']/i");
 	By viewcart=By.xpath("//p//a[@href='/view_cart']");
 	By cs=By.className("btn-success");
@@ -77,8 +77,7 @@ WebDriver driver;
 	{
 		
 		WebElement drs=dressList().stream().filter(d-> d.findElement(By.cssSelector("p")).getText().equalsIgnoreCase(dress)).findFirst().orElse(null);
-		Boolean x=dressList().stream().anyMatch(d-> d.findElement(By.cssSelector("p")).getText().equalsIgnoreCase("Stylish Dress"));
-		System.out.println(x);
+		System.out.println(drs);
 		return drs;
 		
 		
@@ -86,10 +85,12 @@ WebDriver driver;
 	public void viewproduct(String d)
 	{
 		WebElement ds=getDressByName(d);
+		//System.out.println(ds.getText());
 		
-		WebElement viewproduct = ds.findElement(viewProduct);
-		scrollToelement(viewproduct);
-		viewproduct.click();
+		WebElement viewproduct2 = ds.findElement(viewProduct);
+		System.out.println(viewproduct2);
+		scrollToelement(viewproduct2);
+		viewproduct2.click();
 		
 	}
 	
@@ -110,6 +111,7 @@ WebDriver driver;
 	public WebElement getbabyHugDress(String babydrs)
 	{
 		WebElement bhdrs=babyHugDress().stream().filter(d-> d.findElement(By.cssSelector("p")).getText().equals(babydrs)).findFirst().orElse(null);
+		System.out.println(bhdrs);
 		return bhdrs;
 		
 	}
