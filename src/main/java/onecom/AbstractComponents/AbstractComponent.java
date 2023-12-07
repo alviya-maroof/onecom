@@ -1,5 +1,6 @@
 package onecom.AbstractComponents;
 
+import java.sql.Timestamp;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -53,6 +54,19 @@ public class AbstractComponent {
 	{
 		invoice.click();
 	}
+	 
+	    public static String timeStamp() {
+	    	//Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    	long currentTimeMillis = System.currentTimeMillis();
+//	        Timestamp ts1 = Timestamp.valueOf("2018-09-01 09:01:15");  
+//	        System.out.println("Timestamp : "+ts1);  
+//	      //returns a string object in JDBC timestamp escape format .         
+//	        String str=ts1.toString();  
+	    	String email=currentTimeMillis+"@gmail.com";
+	        System.out.println(currentTimeMillis+"@gmail.com");  
+	        return email;
+	    }  
+	}  
 
 	
-}
+

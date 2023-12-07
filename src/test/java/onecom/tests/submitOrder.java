@@ -21,6 +21,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import onecom.AbstractComponents.AbstractComponent;
 import onecom.TestComponents.BaseTest;
 import onecom.pageobjects.CartPage;
 import onecom.pageobjects.HomePage;
@@ -50,7 +51,7 @@ public class submitOrder extends BaseTest{
         c.proceedToCheckout();
         c.loginRegister();
         HomePage l=new HomePage(driver);
-        l.signUp(input.get("name"),input.get("email"));	
+        l.signUp(input.get("name"),AbstractComponent.timeStamp());	
         l.signUpPage(input.get("pwd"),input.get("Fn"),input.get("LN"),input.get("adress"),input.get("country"),input.get("state"),input.get("city"),input.get("zip"),input.get("mobile"));
         l.viewCart();
         c.proceedToCheckout();
