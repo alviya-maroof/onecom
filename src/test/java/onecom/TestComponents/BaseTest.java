@@ -30,9 +30,8 @@ public class BaseTest {
 		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"//src//main//java//onecom//Resources//GlobalData.properties");
 		prop.load(fis);
 		String browser = System.getProperty("browser")!=null ? System.getProperty("browser") :prop.getProperty("browser");
-		
-		String chromePath=System.getProperty("user.dir")+prop.getProperty("chromedriverpath");
-		System.out.println(chromePath);
+		String chromePath =prop.getProperty("chromedriverpath");
+		String fire=prop.getProperty("firefoxdriverpath");
 		
 		
 		
@@ -47,7 +46,7 @@ public class BaseTest {
 		{
 			
 			System.setProperty("webdriver.gecko.driver",
-					"C:\\Users\\Alviya\\Downloads\\geckodriver-v0.33.0-win64\\geckodriver.exe");
+					fire);
 			driver = new FirefoxDriver();
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -78,4 +77,5 @@ public List<HashMap<String, String>> getJsonDataToMap(String Filepath) throws IO
 		  return data;
 		
 }
+
 }
